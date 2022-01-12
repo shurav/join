@@ -1,0 +1,2 @@
+# description
+This program makes use of the concatenate function on numpy to join two user defined arrays. It will ask the user for the number of dimensions of the arrays and their shape. Based on these, the result will be a new array that is joined with axis 0.
