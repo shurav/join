@@ -4,7 +4,7 @@ import numpy
 def joining(arr1, arr2):
     return(numpy.concatenate((arr1, arr2)))
 
-#filles both arrays with user specified values based on the shape of the arrays
+#fills both arrays with user specified values based on the shape of the arrays
 def arrValuesFiller(arr1, arr2):
     print("Enter the values in sequential order for the first array")
     with numpy.nditer(arr1, op_flags=['readwrite']) as it:
@@ -35,8 +35,14 @@ while True:
         dimensions = int(input("How many dimensions are the arrays ")) # dimension must be same for both arrays for joining to take place
         print("You will know enter the shape of the array by dimension")
         while(len(shapeList) != dimensions): #iteration serves to append values in each dimension to shapeList to determine the shape of the arrays
-            shape = int(input("Enter the number of values in the "+ str(dimensions-len(shapeList)-1) + " dimension "))
-            shapeList.append(shape)
+            while True:
+                try:
+                    shape = int(input("Enter the number of values in the "+ str(dimensions-len(shapeList)-1) + " dimension "))
+                    shapeList.append(shape)
+                except ValueError:
+                    print("Invalid")
+                else:
+                    break
         print("This is the shape you entered ", tuple(shapeList))
         # both arrays are initialized to empty arrays with the specified shape
         firstarr = numpy.empty(tuple(shapeList), dtype = int)
@@ -48,3 +54,4 @@ while True:
         print("invalid")
     else:
         break
+
